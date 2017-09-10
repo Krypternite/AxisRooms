@@ -1,47 +1,52 @@
 <ion-side-menus enable-menu-with-back-views="false">
 	<ion-side-menu-content>
-		<ion-nav-bar class="bar-stable">
+		<ion-nav-bar class="bar-dark">
 			<ion-nav-back-button>
 			</ion-nav-back-button>
-
 			<ion-nav-buttons side="left">
-				<button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+				<button class="button button-icon button-clear ion-navicon menu-btn " menu-toggle="left">
         </button>
 			</ion-nav-buttons>
 		</ion-nav-bar>
 		<ion-nav-view name="menuContent"></ion-nav-view>
 	</ion-side-menu-content>
 
-	<ion-side-menu side="left" expose-aside-when="large" width=400>
-		<ion-header-bar class="bar-stable">
+	<ion-side-menu side="left" expose-aside-when="large" width=400 class="side-menu-container">
+		<ion-header-bar class="bar-dark">
 			<h1 class="title">Chats</h1>
+			<div class="buttons">
+				<button class="button button-icon ion-android-search light" ng-click="sideMenuScope.showFilterBar()"></button>
+			</div>
 		</ion-header-bar>
 		<ion-content>
+			<div class="row menu-row">
+				<div class="col">
+					<button ng-click="sideMenuScope.sortValue('user')" class="button icon-left button-block button-positive">
+						<i ng-if="sideMenuScope.sortData.asc && sideMenuScope.sortData.value=== 'user'" class="icon ion-chevron-up"></i>
+						<i ng-if="!sideMenuScope.sortData.asc && sideMenuScope.sortData.value=== '-user'" class="icon ion-chevron-down" ></i>
+					Name
+				</button>
+				</div>
+				<div class="col">
+					<button ng-click="sideMenuScope.sortValue('last.created')" class="button button-block button-positive">
+						<i ng-if="sideMenuScope.sortData.asc &&  sideMenuScope.sortData.value=== 'last.created'" class="icon ion-chevron-up" ></i>
+						<i ng-if="!sideMenuScope.sortData.asc && sideMenuScope.sortData.value=== '-last.created'" class="icon ion-chevron-down" ></i>
+					Date
+						
+				</button>
+				</div>
+			</div>
 			<div class="list">
-				<a class="item item-avatar" ng-repeat="user in userList track by user.id" href='#' ng-click="openChat($event,user)" menu-close>
+				<div class="item item-avatar user-item" ng-repeat="user in sideMenuScope.userList | orderBy:sideMenuScope.sortData.value track by user.id" ng-click="sideMenuScope.openChat($event,user)" menu-close ng-class="sideMenuScope.checkActiveChat(user)">
 					<img ng-src="{{user.img}}">
 					<h2 style="font-weight: bold">{{user.user}}
-						<span class="item-note" style="font-weight: 400; font-size: 12px;float:right;">
-						{{user.messages[user.messages.length-1].created | date:'short'}}
+						<span class="item-note last-date">
+						{{user.last.created | date:'MMM dd, yyyy @ HH:MM'}}
 					</span> </h2>
-					<p>{{user.messages[user.messages.length-1].text}}</p>
+					<p>{{user.last.text}}</p>
 
-				</a>
-				<!--				</ion-list>-->
+				</div>
 			</div>
-			<!--<ion-item menu-close ng-click="login()">
-          Login
-        </ion-item>
-        <ion-item menu-close href="#/app/search">
-          Search
-        </ion-item>
-        <ion-item menu-close href="#/app/browse">
-          Browse
-        </ion-item>
-        <ion-item menu-close href="#/app/playlists">
-          Playlists
-        </ion-item>-->
-
 		</ion-content>
 	</ion-side-menu>
 </ion-side-menus>

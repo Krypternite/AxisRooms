@@ -1,6 +1,6 @@
 angular.module('axisApp.services', [])
 	.factory('utilityFactory', function ($q, $http) {
-		var userList = [
+		var sampleData = [
 			{
 				"id": 12,
 				"user": "Ryan Smith",
@@ -10,13 +10,13 @@ angular.module('axisApp.services', [])
 						"id": 0,
 						"text": "Hi, Mamatha. How are you?",
 						"created": "Fri, 14 Jul 2017 09:56:37 GMT",
-						"createdBy": 0
+						"createdBy": 12
                 },
 					{
 						"id": 0,
 						"text": "Hello, Ryan Smith. I'm Fine",
 						"created": "Fri, 15 Jul 2017 09:56:37 GMT",
-						"createdBy": 12
+						"createdBy": 0
                 }
             ]
     },
@@ -44,22 +44,20 @@ angular.module('axisApp.services', [])
             ]
     }
     ];
+		var userList = {};
 		return {
 			getUserList: function () {
-				return userList;
+				return sampleData;
 			},
 			fetchUsers: function () {
-				/*this.makeGetRequest("http://demo4842709.mockable.io/users").then(function (data) {
-					console.log(data);
-				}, function (err) {
-					console.log(err);
-				})*/
 
-				$http.jsonp("http://demo4842709.mockable.io/users").then(function (data) {
+				return this.makeGetRequest("http://demo0168801.mockable.io/users");
+
+				/*$http.jsonp("http://demo0168801.mockable.io/users").then(function (data) {
 					console.log(data);
 				}, function (err) {
 					console.log(err);
-				});
+				});*/
 			},
 			makeGetRequest: function (url) {
 				var deferred = $q.defer();
@@ -70,9 +68,9 @@ angular.module('axisApp.services', [])
 					},
 					url: url
 				}).then(function successCallback(response) {
-					deferred.resolve(response);
+					deferred.resolve(response.data);
 				}, function errorCallback(response) {
-					deferred.reject(response);
+					deferred.reject("Request Could Not Be Completed");
 				});
 
 				return deferred.promise;
