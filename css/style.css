@@ -26,6 +26,10 @@
 	height: 100%;
 }
 
+.wrap {
+	white-space: normal !important;
+}
+
 
 /*LEFT MENU CLASSES*/
 
