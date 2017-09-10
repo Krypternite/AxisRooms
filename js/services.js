@@ -51,7 +51,7 @@ angular.module('axisApp.services', [])
 			},
 			fetchUsers: function () {
 
-				return this.makeGetRequest("http://demo0168801.mockable.io/users");
+				return this.makeGetRequest("https://demo0168801.mockable.io/users");
 
 				/*$http.jsonp("http://demo0168801.mockable.io/users").then(function (data) {
 					console.log(data);
