@@ -1,33 +1,53 @@
-This is an addon starter template for the [Ionic Framework](http://ionicframework.com/).
+Axis Chat
+===================
+------------
+**TASK : TO MIMIC GITHUB ISSUES AS MUCH AS POSSIBLE**
 
-## How to use this template
+This is make an offline chat application based on the given requirements. The application uses AngularJS.
 
-*This template does not work on its own*. It is missing the Ionic library, and AngularJS.
+----------
 
-To use this, either create a new ionic project using the ionic node.js utility, or copy and paste this into an existing Cordova project and download a release of Ionic separately.
 
-### With the Ionic tool:
+Documentation
+-------------
 
-Take the name after `ionic-starter-`, and that is the name of the template to be used when using the `ionic start` command below:
+**Left**
 
-```bash
-$ sudo npm install -g ionic cordova
-$ ionic start myApp sidemenu
-```
+ - The users are listed on the left hand side of the application.
+ - The left side-menu also contains to buttons to sort the users based
+   on Name and Date.
+ - Clicking the sort buttons once sorts the users in ascending order of
+   the selected filter, clicking the same button again sorts the users
+   in descending order.
+ - There is also a search button at the top of the left side-menu that
+   can be used to search the users.
+ - Clicking on a particular user loads the chat box on the right hand
+   side where his messages are listed.
+   
+   **Chat Box**
+ - The incoming messages are list on the left hand side of the chat box and the outgoing messages are listed on the right hand side of the chat box.
+ - At the bottom of the page, there is an input box to type new messages and there is also a send button next to it.
+ - The send button remains disabled as long as nothing has been typed in the input box.
+ - At the top of the page, there is a **toggle**, this is intended for use to emulate the incoming and outgoing messages. 
+	 - When the toggle is to the right, all the new typed messages are treated as outgoing.
+	 - When the toggle is to the left, all the new typed messages are treated as incoming.
+ 
 
-Then, to run it, cd into `myApp` and run:
+> **Note:**
+> 
+> - There were some inconsistencies with **SAMPLE JSON** provided at http://demo4842709.mockable.io/users . Checked it with multiple online JSON Validators like [jsonlint.com](http://www.jsonlint.com) and https://jsonformatter.curiousconcept.com/.
+> - So I hosted my own JSON at http://demo0168801.mockable.io/users.
+>- The app when run for the first time fetches the list of JSON from  http://demo0168801.mockable.io/users using $http and processes the JSON and sets up the **LocalStorage**. 
+>- Once the localStorage has been set up, reloading there message sent via the chat box are persisted using the localstorage and the not lost even upon reloading the page.
 
-```bash
-$ ionic platform add ios
-$ ionic build ios
-$ ionic emulate ios
-```
 
-Substitute ios for android if not on a Mac, but if you can, the ios development toolchain is a lot easier to work with until you need to do anything custom to Android.
+----------
+## Demo ##
+The demo the for the application is hosted at [AxisChat](https://krypternite.github.io/AxisRooms/).
 
-## Demo
-http://plnkr.co/edit/0RXSDB?p=preview
 
-## Issues
-Issues have been disabled on this repo, if you do find an issue or have a question consider posting it on the [Ionic Forum](http://forum.ionicframework.com/).  Or else if there is truly an error, follow our guidelines for [submitting an issue](http://ionicframework.com/contribute/#issues) to the main Ionic repository. On the other hand, pull requests are welcome here!
-"# AxisRooms" 
+----------
+
+
+**Thanks.**
+----
