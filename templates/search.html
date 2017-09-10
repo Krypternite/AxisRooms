@@ -1,0 +1,41 @@
+<ion-view view-title="Messages">
+	<ion-content>
+		<div ng-if="AXCHScopeData.state.loaded === false" class="welcome">
+			<h1 class="title text-center">Welcome to AxisChat.</h1>
+		</div>
+		<div ng-if="AXCHScopeData.state.loaded === true" class="list message-list ">
+			<div class="item elastic " style="border:0; padding: 10px; " ng-repeat="message in AXCHScopeData.selectedUser.messages track by $index">
+				<div class="message card " ng-class="AXCHScopeData.checkMessageDirection(message)">
+
+
+					<div class="message-text ">{{message.text}}</div>
+					<div class="message-meta item-avatar ">
+						<img src="https://randomuser.me/api/portraits/women/16.jpg ">
+						<span class="fl-right ">{{message.created | date:'MMM dd, yyyy HH:mm'}}</span>
+					</div>
+				</div>
+			</div>
+			<!--	<div class="item elastic " style="border:0; padding: 10px; ">
+				<div class="message message-out card ">
+
+
+					<div class="message-text ">THIS IS INCOMING THIS IS INCOMING THIS IS INCOMING THIS IS INCOMING THIS IS INCOMING THIS IS INCOMING THIS IS INCOMING THIS IS INCOMING THIS IS INCOMING THIS IS INCOMING THIS IS INCOMING THIS IS INCOMING THIS IS INCOMING THIS IS INCOMING</div>
+					<div class="message-meta item-avatar ">
+						<img src="https://randomuser.me/api/portraits/women/16.jpg ">
+						<span class="fl-right ">July 1, 2017 15:20</span>
+					</div>
+				</div>
+			</div>-->
+
+		</div>
+
+	</ion-content>
+	<ion-footer-bar ng-if="AXCHScopeData.state.loaded===true" keyboard-attach class="bar-stable item-input-inset " style="padding: 0 15px 0px 0px">
+		<label class="item-input-wrapper " style=" padding: 0px; height: 100%; ">
+			<textarea placeholder="Type your message " on-return="sendMessage(); closeKeyboard() " ng-model="AXCHScopeData.messageModel" on-focus="inputUp() " on-blur="inputDown() " style="border: 0" rows="1"></textarea>
+      </label>
+		<button ng-disabled="AXCHScopeData.checkSend()" class="button button-clear button-assertive " ng-click="AXCHScopeData.sendMessage() ">
+       <span style="font-weight: bold ">SEND</span> 
+      </button>
+	</ion-footer-bar>
+</ion-view>
