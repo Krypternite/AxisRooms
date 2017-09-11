@@ -1,7 +1,7 @@
 Axis Chat
 ===================
 ------------
-**TASK : TO MIMIC GITHUB ISSUES AS MUCH AS POSSIBLE**
+**TASK : TO MAKE AN OFFLINE CHAT APPLICATION BASED ON THE REQUIREMENTS**
 
 This is make an offline chat application based on the given requirements. The application uses AngularJS.
 
